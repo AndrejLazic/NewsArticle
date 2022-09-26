@@ -1,0 +1,2 @@
+# Vesti-Clanci
+praksa Indas
