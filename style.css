@@ -1,0 +1,6 @@
+body{
+    background: #29515D -webkit-gradient(linear, 30% 0%, 30% 100%, color-stop(0%, #4A9D4D), color-stop(30%, #29515D));
+    background-size: 1px 2000px;
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+}
