@@ -25,6 +25,7 @@ async function getPost(){
 }
 
 async function getComments(btn){
+    console.log("===============================")
     console.log("BUTTON ID =  " + btn.id);
 
     const response =  await fetch('https://jsonplaceholder.typicode.com/comments');
@@ -33,37 +34,38 @@ async function getComments(btn){
     const comments = new Comments(comm, btn.id);
 }
 
-class Post{
-    constructor(post){
+class Post { 
+    constructor (post){ 
         this.article = post;
 
         //console.log(this.article);
 
-        this.generatePosts();
+        this.generatePosts(this.article);
+        
     }
 
-    generatePosts(){
+    generatePosts(article){
         var card = "";
-        for(let i=0; i<this.article.length; i++){
+        for(let i=0; i<article.length; i++){
             card +=  `
                 <div class="container">
                 <div class="col mb-4">
                     <div class="card bg-black p-2 " style="--bs-bg-opacity: .23;">
 
                         <div class="modal-header m-2 ">
-                            <div class="text-white fs-5">${this.article[i].title}</div>
-                            <button id='${this.article[i].id}' onclick="Post.removePost(this)" class="btn btn-danger">X</button>
+                            <div class="text-white fs-5">${article[i].title}</div>
+                            <button id='${article[i].id}' onclick="Post.removePost(this)" class="btn btn-danger">X</button>
                         </div>
 
                         <div class ="card-body bg-black text-left text-white-50 rounded-3 m-2" style="--bs-bg-opacity: .37;">
-                            <div class="price fs-7" class="price fs-8">${this.article[i].body}</div>
+                            <div class="price fs-7" class="price fs-8">${article[i].body}</div>
                         </div>
 
                         <div class="fs-6 text-white-50 mt-2 mb-2">
                             <div class="text-end">
                                 <abbr class="bg-black text-white-50 rounded-3 p-1" style="--bs-bg-opacity: .37;">
-                                    <span id="username" class="fst-italic">${this.article[i].name}</span>
-                                    <button id='${this.article[i].id}' onclick="getComments(this)" class="btn text-white-50 fst-italic"><b>Comments</b></button>
+                                    <span id="username" class="fst-italic">${article[i].name}</span>
+                                    <button id='${article[i].id}' onclick="getComments(this)" class="btn text-white-50 fst-italic"><b>Comments</b></button>
                                 </abbr>
                             </div>
                         </div>
@@ -76,7 +78,18 @@ class Post{
     }
 
     static removePost(btn){
-        alert("Remove Post: " + btn.id);
+        //alert("Remove Post: " + btn.id);
+        var arr = this.article;
+        console.log(arr);
+        for(var i=0; i<arr.length; i++){
+            if(arr[i].id == btn){
+                arr.splice(i,1);
+            }
+        }
+        console.log(arr);
+        this.generatePosts(arr);
+        
+
     }
 }
 
