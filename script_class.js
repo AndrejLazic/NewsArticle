@@ -50,15 +50,9 @@ class Post{
                 <div class="col mb-4">
                     <div class="card bg-black p-2 " style="--bs-bg-opacity: .23;">
 
-                        <div class ="p-2 fs-5 text-left text-white">
-                            <div>${this.article[i].title}
-                                <div class="text-end">
-                                    <div class="btn-group me-2" role="group">
-                                        <button type="button" class="btn bg-black text-white" style="--bs-bg-opacity: .37;">+</button>
-                                        <button type="button" class="btn bg-black text-white" style="--bs-bg-opacity: .37;">-</button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="modal-header m-2 ">
+                            <div class="text-white fs-5">${this.article[i].title}</div>
+                            <button id='${this.article[i].id}' onclick="Post.removePost(this)" class="btn btn-danger">X</button>
                         </div>
 
                         <div class ="card-body bg-black text-left text-white-50 rounded-3 m-2" style="--bs-bg-opacity: .37;">
@@ -68,7 +62,6 @@ class Post{
                         <div class="fs-6 text-white-50 mt-2 mb-2">
                             <div class="text-end">
                                 <abbr class="bg-black text-white-50 rounded-3 p-1" style="--bs-bg-opacity: .37;">
-                                    <abbr title="attribute">pre 14 sati</abbr>
                                     <span id="username" class="fst-italic">${this.article[i].name}</span>
                                     <button id='${this.article[i].id}' onclick="getComments(this)" class="btn text-white-50 fst-italic"><b>Comments</b></button>
                                 </abbr>
@@ -80,6 +73,10 @@ class Post{
                 `;
         }
         document.getElementById("cards").innerHTML = card;
+    }
+
+    static removePost(btn){
+        alert("Remove Post: " + btn.id);
     }
 }
 
