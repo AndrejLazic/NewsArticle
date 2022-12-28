@@ -1,2 +1,3 @@
 # Vesti-Clanci
-praksa Indas
+INDAS - praksa
+
