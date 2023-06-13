@@ -1,3 +1,3 @@
 # Vesti-Clanci
-INDAS - praksa
+INDAS - Internship
 
